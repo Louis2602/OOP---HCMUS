@@ -78,7 +78,6 @@ Fraction Fraction::Divide(Fraction ps)
 Fraction Fraction::Reduce()
 {
     int UocChung = abs(gcd(tuso, mauso));
-    cout << UocChung << endl;
     Fraction ans;
     ans.tuso = tuso / UocChung;
     ans.mauso = mauso / UocChung;

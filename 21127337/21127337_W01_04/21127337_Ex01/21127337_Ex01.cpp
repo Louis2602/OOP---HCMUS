@@ -18,6 +18,7 @@ int main()
     ans.Reduce();
     a.Reduce();
     b.Reduce();
+    a.Compare(b);
     cout << a.isNegative() << endl;
     cout << a.isPositive() << endl;
     cout << a.isZero() << endl;
