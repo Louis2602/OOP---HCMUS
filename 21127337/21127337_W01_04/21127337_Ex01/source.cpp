@@ -93,19 +93,19 @@ void Fraction::Compare(Fraction ps)
 {
     Fraction tmp = Subtract(ps);
     if (tmp.tuso < 0)
-        cout << "Phan so 1 > Phan so 2\n";
+        cout << "Lon hon\n";
     else if (tmp.tuso > 0)
-        cout << "Phan so 1 < Phan so 2\n";
+        cout << "Be Hon\n";
     else
-        cout << "Phan so 1 = Phan so 2\n";
+        cout << "Bang nhau\n";
 }
 bool Fraction::isNegative()
 {
-    return tuso < 0;
+    return tuso * mauso < 0;
 }
 bool Fraction::isPositive()
 {
-    return tuso > 0;
+    return tuso * mauso > 0;
 }
 bool Fraction::isZero()
 {
