@@ -12,7 +12,7 @@ void Fraction::Input()
 }
 void Fraction::Output()
 {
-    cout << "Phan so ban nhap la: " << tuso << " / " << mauso << '\n';
+    cout << "Fraction: " << tuso << " / " << mauso << '\n';
 }
 int gcd(int a, int b)
 {
@@ -25,6 +25,7 @@ int lcm(int a, int b)
 Fraction Fraction::Add(Fraction ps)
 {
     Fraction ans;
+    ans.mauso = lcm(mauso, ps.mauso);
     if (mauso == ps.mauso)
     {
         ans.tuso = tuso + ps.tuso;
@@ -32,15 +33,15 @@ Fraction Fraction::Add(Fraction ps)
     }
     else
     {
-        ans.tuso = tuso * ps.mauso + ps.tuso * mauso;
-        ans.mauso = lcm(mauso, ps.mauso);
+        ans.tuso = tuso * (ans.mauso / mauso) + ps.tuso * (ans.mauso / ps.mauso);
     }
-    cout << "PS1 + PS2 = " << ans.tuso << " / " << ans.mauso << '\n';
+    ans = ans.Reduce();
     return ans;
 }
 Fraction Fraction::Subtract(Fraction ps)
 {
     Fraction ans;
+    ans.mauso = lcm(mauso, ps.mauso);
     if (mauso == ps.mauso)
     {
         ans.tuso = tuso - ps.tuso;
@@ -48,10 +49,9 @@ Fraction Fraction::Subtract(Fraction ps)
     }
     else
     {
-        ans.tuso = tuso * ps.mauso - ps.tuso * mauso;
-        ans.mauso = lcm(mauso, ps.mauso);
+        ans.tuso = tuso * (ans.mauso / mauso) - ps.tuso * (ans.mauso / ps.mauso);
     }
-    cout << "PS1 - PS2 = " << ans.tuso << " / " << ans.mauso << '\n';
+    ans = ans.Reduce();
     return ans;
 }
 Fraction Fraction::Multiply(Fraction ps)
@@ -59,7 +59,7 @@ Fraction Fraction::Multiply(Fraction ps)
     Fraction ans;
     ans.tuso = tuso * ps.tuso;
     ans.mauso = mauso * ps.mauso;
-    cout << "PS1 * PS2 = " << ans.tuso << " / " << ans.mauso << '\n';
+    ans = ans.Reduce();
     return ans;
 }
 Fraction Fraction::Divide(Fraction ps)
@@ -72,7 +72,7 @@ Fraction Fraction::Divide(Fraction ps)
     }
     ans.tuso = tuso * ps.mauso;
     ans.mauso = mauso * ps.tuso;
-    cout << "PS1 / PS2 = " << ans.tuso << " / " << ans.mauso << '\n';
+    ans = ans.Reduce();
     return ans;
 }
 Fraction Fraction::Reduce()
@@ -86,18 +86,18 @@ Fraction Fraction::Reduce()
         ans.mauso = abs(ans.mauso);
         ans.tuso *= -1;
     }
-    cout << "Phan so sau khi rut gon = " << ans.tuso << " / " << ans.mauso << '\n';
     return ans;
 }
-void Fraction::Compare(Fraction ps)
+int Fraction::Compare(Fraction ps)
 {
     Fraction tmp = Subtract(ps);
-    if (tmp.tuso < 0)
-        cout << "Lon hon\n";
-    else if (tmp.tuso > 0)
-        cout << "Be Hon\n";
+    float comp = (float)tmp.tuso / tmp.mauso;
+    if (comp > 0)
+        return 1;
+    else if (comp < 0)
+        return -1;
     else
-        cout << "Bang nhau\n";
+        return 0;
 }
 bool Fraction::isNegative()
 {

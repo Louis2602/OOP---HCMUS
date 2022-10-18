@@ -7,6 +7,7 @@ using namespace std;
 class Fraction
 {
     int tuso, mauso;
+
 public:
     void Input();
     void Output();
@@ -15,7 +16,7 @@ public:
     Fraction Multiply(Fraction);
     Fraction Divide(Fraction);
     Fraction Reduce();
-    void Compare(Fraction);
+    int Compare(Fraction);
     bool isPositive();
     bool isNegative();
     bool isZero();
