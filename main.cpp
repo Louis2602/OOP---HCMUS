@@ -3,9 +3,10 @@ using namespace std;
 
 // Abstration
 // if any classes sign to the contract of abstraction class, it has to provide the implementation for the method that is in the contract.
+// Abstract class
 class AbstractEmployee
 {
-    // pure virtual function
+    // A pure virtual function is declared by assigning 0 in declaration
     virtual void AskForPromotion() = 0;
 };
 
