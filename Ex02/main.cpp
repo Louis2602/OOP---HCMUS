@@ -4,9 +4,9 @@ int main()
 {
     Complex z1, z2;
     z1.Input();
-    z2.Input();
-
     z1.Output();
+
+    z2.Input();
     z2.Output();
 
     Complex ans;

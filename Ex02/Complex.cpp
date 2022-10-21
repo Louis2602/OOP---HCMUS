@@ -7,12 +7,12 @@ void Complex::Input()
     cin >> _real;
     cout << "Im: ";
     cin >> _im;
-    setReal(_real);
-    setIm(_im);
+    this->setReal(_real);
+    this->setIm(_im);
 }
 void Complex::Output()
 {
-    cout << "Complex Number: " << getReal() << " + (" << getIm() << ")i\n";
+    cout << "Complex Number: " << this->getReal() << " + (" << this->getIm() << ")i\n";
 }
 float Complex::getReal()
 {
@@ -33,35 +33,35 @@ void Complex::setIm(float _im)
 
 float Complex::module()
 {
-    return (float)sqrt(getReal() * getReal() + getIm() * getIm());
+    return (float)sqrt(this->getReal() * this->getReal() + this->getIm() * this->getIm());
 }
 Complex Complex::operator+(Complex z)
 {
     Complex ans;
-    ans.setReal(getReal() + z.getReal());
-    ans.setIm(getIm() + z.getIm());
+    ans.setReal(this->getReal() + z.getReal());
+    ans.setIm(this->getIm() + z.getIm());
     return ans;
 }
 
 Complex Complex::operator-(Complex z)
 {
     Complex ans;
-    ans.setReal(getReal() - z.getReal());
-    ans.setIm(getIm() - z.getIm());
+    ans.setReal(this->getReal() - z.getReal());
+    ans.setIm(this->getIm() - z.getIm());
     return ans;
 }
 Complex Complex::operator*(Complex z)
 {
     Complex ans;
-    ans.setReal(getReal() * z.getReal() + getIm() * z.getIm() * -1);
-    ans.setIm(getReal() * z.getIm() + getIm() * z.getReal());
+    ans.setReal(this->getReal() * z.getReal() + this->getIm() * z.getIm() * -1);
+    ans.setIm(this->getReal() * z.getIm() + this->getIm() * z.getReal());
     return ans;
 }
 Complex Complex::operator/(Complex z)
 {
     Complex ans;
     float msc = z.module() * z.module();
-    ans.setReal((float)(getReal() * z.getReal() + getIm() * z.getIm()) / msc);
-    ans.setIm((float)(getIm() * z.getReal() - getReal() * z.getIm()) / msc);
+    ans.setReal((float)(this->getReal() * z.getReal() + this->getIm() * z.getIm()) / msc);
+    ans.setIm((float)(this->getIm() * z.getReal() - this->getReal() * z.getIm()) / msc);
     return ans;
 }
