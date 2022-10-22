@@ -68,18 +68,18 @@ char Divide(char Q, char M, int mode)
     bool checkNegative = false;
     if (M == 0)
         return '\0';
-    if (Q < 0)
+    if ((M && Q) || (!M && !Q))
+        checkNegative = false;
+    if (Q < 0 && M > 0)
     {
         Q *= -1;
         checkNegative = true;
     }
-    if (M < 0)
+    if (M < 0 && Q > 0)
     {
         M *= -1;
         checkNegative = true;
     }
-    if (M && Q)
-        checkNegative = false;
     while (k > 0)
     {
         A <<= 1;
@@ -99,7 +99,7 @@ char Divide(char Q, char M, int mode)
     if (mode)
         checkNegative ? ans = Q *-1 : ans = Q;
     else
-        ans = A;
+        checkNegative ? ans = A *-1 : ans = A;
     return ans;
 }
 int main()
