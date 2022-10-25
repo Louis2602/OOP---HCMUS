@@ -19,6 +19,9 @@ void LinkedListQueue::output()
 }
 void LinkedListQueue::enqueue(int x)
 {
+    num++;
+    if (isFull())
+        return;
     Node *t = new Node(x);
     if (tail == NULL)
     {
@@ -31,6 +34,7 @@ void LinkedListQueue::enqueue(int x)
 int LinkedListQueue::dequeue()
 {
     int x = -1;
+    num--;
     if (head == NULL)
         return x;
     Node *t = head;
@@ -49,19 +53,11 @@ int LinkedListQueue::peek()
 
 bool LinkedListQueue::isEmpty()
 {
-    if (head == NULL || tail == NULL)
-        return true;
-    return false;
+    return num == 0;
 }
 
 bool LinkedListQueue::isFull()
 {
-    Node *t = head;
-    while (t)
-    {
-        num++;
-        t = t->next;
-    }
     return num == capacity;
 }
 void LinkedListQueue::clear()
