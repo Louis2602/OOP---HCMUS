@@ -6,6 +6,7 @@ int main()
     t.Input();
     t.Output();
     t.isValidTriangle() == true ? cout << "Valid Triangle\n" : cout << "Invalid Triangle\n";
+    cout << "Type of triangle: ";
     t.TypeOfTriangle();
     cout << "Chu vi = " << t.Parameter() << endl;
     cout << "Dien tich = " << t.Area() << endl;

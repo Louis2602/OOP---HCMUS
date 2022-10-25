@@ -67,7 +67,6 @@ bool Triangle::isValidTriangle()
 }
 void Triangle::TypeOfTriangle()
 {
-    cout << AB << " " << BC << " " << AC << endl;
     if ((float)sqrt(AB * AB + BC * BC) == (float)AC || (float)sqrt(AB * AB + AC * AC) == (float)BC || (float)sqrt(BC * BC + AC * AC) == (float)AB)
     {
         if (AB == AC || AC == BC || AB == BC)

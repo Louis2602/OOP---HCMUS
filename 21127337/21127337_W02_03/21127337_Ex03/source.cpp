@@ -6,7 +6,17 @@ void LinkedListQueue::init(int _capacity)
     capacity = _capacity;
     num = 0;
 }
-
+void LinkedListQueue::output()
+{
+    cout << "Your queue is: ";
+    Node *t = head;
+    while (t != NULL)
+    {
+        cout << t->data << " ";
+        t = t->next;
+    }
+    cout << endl;
+}
 void LinkedListQueue::enqueue(int x)
 {
     Node *t = new Node(x);
@@ -20,13 +30,14 @@ void LinkedListQueue::enqueue(int x)
 }
 int LinkedListQueue::dequeue()
 {
+    int x = -1;
     if (head == NULL)
-        return;
+        return x;
     Node *t = head;
     head = head->next;
     if (head == NULL)
         tail = NULL;
-    int x = t->data;
+    x = t->data;
     delete t;
     return x;
 }

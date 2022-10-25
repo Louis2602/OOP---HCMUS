@@ -21,13 +21,13 @@ int main()
     cout << "/: ";
     ans.Output();
     cout << "Rut gon: \n";
-    a = a.Reduce();
+    a.Reduce();
     a.Output();
-    b = b.Reduce();
+    b.Reduce();
     b.Output();
-    cout << a.Compare(b) << endl;
-    cout << a.isNegative() << endl;
-    cout << a.isPositive() << endl;
-    cout << a.isZero() << endl;
+    cout << "Compare: " << a.Compare(b) << endl;
+    cout << "A is negative? : " << a.isNegative() << endl;
+    cout << "A is positive? : " << a.isPositive() << endl;
+    cout << "A is zero? : " << a.isZero() << endl;
     return 0;
 }

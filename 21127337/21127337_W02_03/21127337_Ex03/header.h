@@ -23,6 +23,7 @@ class LinkedListQueue
 
 public:
     void init(int capacity);
+    void output();
     void enqueue(int x);
     int dequeue();
     int peek();

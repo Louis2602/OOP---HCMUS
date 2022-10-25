@@ -35,7 +35,7 @@ Fraction Fraction::Add(Fraction ps)
     {
         ans.tuso = tuso * (ans.mauso / mauso) + ps.tuso * (ans.mauso / ps.mauso);
     }
-    ans = ans.Reduce();
+    ans.Reduce();
     return ans;
 }
 Fraction Fraction::Subtract(Fraction ps)
@@ -51,7 +51,7 @@ Fraction Fraction::Subtract(Fraction ps)
     {
         ans.tuso = tuso * (ans.mauso / mauso) - ps.tuso * (ans.mauso / ps.mauso);
     }
-    ans = ans.Reduce();
+    ans.Reduce();
     return ans;
 }
 Fraction Fraction::Multiply(Fraction ps)
@@ -59,7 +59,7 @@ Fraction Fraction::Multiply(Fraction ps)
     Fraction ans;
     ans.tuso = tuso * ps.tuso;
     ans.mauso = mauso * ps.mauso;
-    ans = ans.Reduce();
+    ans.Reduce();
     return ans;
 }
 Fraction Fraction::Divide(Fraction ps)
@@ -72,21 +72,19 @@ Fraction Fraction::Divide(Fraction ps)
     }
     ans.tuso = tuso * ps.mauso;
     ans.mauso = mauso * ps.tuso;
-    ans = ans.Reduce();
+    ans.Reduce();
     return ans;
 }
-Fraction Fraction::Reduce()
+void Fraction::Reduce()
 {
     int UocChung = abs(gcd(tuso, mauso));
-    Fraction ans;
-    ans.tuso = tuso / UocChung;
-    ans.mauso = mauso / UocChung;
-    if (ans.mauso < 0)
+    tuso = tuso / UocChung;
+    mauso = mauso / UocChung;
+    if (mauso < 0)
     {
-        ans.mauso = abs(ans.mauso);
-        ans.tuso *= -1;
+        mauso = abs(mauso);
+        tuso *= -1;
     }
-    return ans;
 }
 int Fraction::Compare(Fraction ps)
 {

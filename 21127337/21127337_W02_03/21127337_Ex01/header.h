@@ -15,7 +15,7 @@ public:
     Fraction Subtract(Fraction);
     Fraction Multiply(Fraction);
     Fraction Divide(Fraction);
-    Fraction Reduce();
+    void Reduce();
     int Compare(Fraction);
     bool isPositive();
     bool isNegative();
