@@ -22,10 +22,10 @@ int main()
     q.enqueue(21);
     q.output();
     x = q.dequeue();
-    cout << "Dequeue: " << x << endl; // 3
+    cout << "Dequeue: " << x << endl; // 2
     q.output();
-    // 2 5 7 8 6 12 21 = 7
-    cout << "Peek value of queue: " << q.peek() << endl; // 2
+    // 5 7 8 6 12 21 = 6
+    cout << "Peek value of queue: " << q.peek() << endl; // 5
     cout << "Queue is full? : " << q.isFull() << endl;   // true
     cout << "Queue is empty? : " << q.isEmpty() << endl; // no
     q.clear();
