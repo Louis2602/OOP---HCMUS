@@ -7,7 +7,6 @@ struct Node
     int data;
     Node *next;
 
-public:
     Node(int key)
     {
         data = key;
@@ -25,7 +24,7 @@ class LinkedListQueue
 public:
     void init(int capacity);
     void enqueue(int x);
-    void dequeue();
+    int dequeue();
     int peek();
     bool isEmpty();
     bool isFull();

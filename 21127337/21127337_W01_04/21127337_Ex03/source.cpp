@@ -18,7 +18,7 @@ void LinkedListQueue::enqueue(int x)
     tail->next = t;
     tail = t;
 }
-void LinkedListQueue::dequeue()
+int LinkedListQueue::dequeue()
 {
     if (head == NULL)
         return;
@@ -26,7 +26,9 @@ void LinkedListQueue::dequeue()
     head = head->next;
     if (head == NULL)
         tail = NULL;
+    int x = t->data;
     delete t;
+    return x;
 }
 
 int LinkedListQueue::peek()

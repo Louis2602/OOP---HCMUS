@@ -11,7 +11,8 @@ int main()
     q.enqueue(8);
     q.enqueue(6);
     // 3 2 5 7 8 6
-    q.dequeue();
+    int x = q.dequeue();
+    cout << "Dequeue: " << x << endl;
     // 2 5 7 8 6
     q.enqueue(12);
     q.enqueue(21);
