@@ -70,7 +70,6 @@ void Dec2Bin(char n, char arr[8])
 int Bin2Dec(char *arr)
 {
     int dec_value = 0;
-    // Initializing base value to 1, i.e 2^0
     int base = 1;
     for (int i = 7; i >= 0; i--)
     {
@@ -78,6 +77,8 @@ int Bin2Dec(char *arr)
             dec_value += base;
         base = base * 2;
     }
+    if (arr[0] == 1)
+        return dec_value - 256;
     return dec_value;
 }
 char *Add(char a[8], char b[8])
@@ -104,7 +105,8 @@ char *Subtract(char a[8], char b[8])
 char *Multiply(char a[8], char b[8])
 {
     // using Booth's Multiplication algorithm
-    char Q[8], M[8];
+    char *Q = new char[8];
+    char *M = new char[8];
     copy(Q, a);
     copy(M, b);
     char *ans, *A = new char[8];
@@ -141,7 +143,8 @@ bool isZero(char *a)
 char *Divide(char a[8], char b[8], int mode)
 {
     // char *Q, *M = new char[8];
-    char Q[8], M[8];
+    char *Q = new char[8];
+    char *M = new char[8];
     char *comp;
     copy(Q, a);
     copy(M, b);
@@ -191,7 +194,7 @@ char *Divide(char a[8], char b[8], int mode)
         if (checkNegative)
             ans = compQ;
         else
-            ans = Q;
+            return Q;
     }
     else
     {
