@@ -135,13 +135,17 @@ char *Divide(char a[8], char b[8], int mode)
     char *comp;
     copy(Q, a);
     copy(M, b);
-    char *ans, *A = new char[8];
+    char *ans = new char[8];
+    char *A = new char[8];
     memset(A, 0, 8);
     int k = 8;
     bool checkNegative = false;
     bool checkSoChia = false;
-    if (isZero(M))
+    if (isZero(M)) {
+        cout << "\nCannot implement division!!\n";
+        memset(ans, 0, 8);
         return ans;
+    }
     if ((M[0] == 0 && Q[0] == 0))
         checkNegative = false;
     if ((M[0] == 1 && Q[0] == 1))
