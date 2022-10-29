@@ -37,15 +37,6 @@ void copy(char *a, char *b)
     for (int i = 0; i < 8; i++)
         a[i] = b[i];
 }
-char *concat(char *a, char *b)
-{
-    char *new_str = new char[8];
-    for (int i = 0; i < 8; i++)
-        new_str[i] = a[i];
-    for (int i = 9; i < 16; i++)
-        new_str[i] = b[i];
-    return new_str;
-}
 void input(int &a, int &b)
 {
     cout << "Input A (Decimal): ";
@@ -72,11 +63,7 @@ int Bin2Dec(char *arr)
     int dec_value = 0;
     int base = 1;
     for (int i = 7; i >= 0; i--)
-    {
-        if (arr[i] == 1)
-            dec_value += base;
-        base = base * 2;
-    }
+        dec_value += (arr[i] << (7 - i));
     if (arr[0] == 1)
         return dec_value - 256;
     return dec_value;
@@ -155,8 +142,16 @@ char *Divide(char a[8], char b[8], int mode)
     bool checkSoChia = false;
     if (isZero(M))
         return ans;
-    if ((M[0] == 0 && Q[0] == 0) || (M[0] == 1 && Q[0] == 1))
+    if ((M[0] == 0 && Q[0] == 0))
         checkNegative = false;
+    if ((M[0] == 1 && Q[0] == 1))
+    {
+        checkNegative = false;
+        comp = Complement(Q);
+        copy(Q, comp);
+        comp = Complement(M);
+        copy(M, comp);
+    }
     else if (Q[0] == 1 && M[0] == 0)
     {
         comp = Complement(Q);
