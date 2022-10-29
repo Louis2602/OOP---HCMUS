@@ -96,7 +96,7 @@ char *Multiply(char a[8], char b[8])
     char *M = new char[8];
     copy(Q, a);
     copy(M, b);
-    char *ans, *A = new char[8];
+    char *A = new char[8];
     memset(A, 0, 8);
     char QNegative1 = 0, twoLastBit;
     int k = 8;
@@ -117,8 +117,9 @@ char *Multiply(char a[8], char b[8])
         Q[0] = lastBitOfA;
         k--;
     }
-    ans = Q;
-    return ans;
+    delete[] M;
+    delete[] A;
+    return Q;
 }
 bool isZero(char *a)
 {
@@ -141,7 +142,8 @@ char *Divide(char a[8], char b[8], int mode)
     int k = 8;
     bool checkNegative = false;
     bool checkSoChia = false;
-    if (isZero(M)) {
+    if (isZero(M))
+    {
         cout << "\nCannot implement division!!\n";
         memset(ans, 0, 8);
         return ans;
@@ -207,6 +209,7 @@ char *Divide(char a[8], char b[8], int mode)
         else
             ans = A;
     }
+    delete[] M;
     return ans;
 }
 int main()
