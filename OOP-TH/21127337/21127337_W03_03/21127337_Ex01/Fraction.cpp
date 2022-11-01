@@ -33,6 +33,12 @@ void Fraction::setNum(int num)
     Numerator = num;
 }
 
+Fraction Fraction::operator=(Fraction a)
+{
+    this->setNum(a.getNum());
+    this->setDeno(a.getDeno());
+    return *this;
+}
 Fraction Fraction::operator+(Fraction a)
 {
     Fraction ans;
@@ -159,109 +165,79 @@ bool Fraction::operator<=(Fraction a)
 Fraction Fraction::operator+(int a)
 {
     Fraction tmp, ans;
-    tmp.setNum(a * this->getDeno());
-    tmp.setDeno(this->getDeno());
-    ans.setNum(this->getNum() + tmp.getNum());
-    ans.setDeno(this->getDeno());
-    ans.Reduce();
+    tmp.setNum(a);
+    tmp.setDeno(1);
+    ans = *this + tmp;
     return ans;
 }
 Fraction Fraction::operator-(int a)
 {
     Fraction tmp, ans;
-    tmp.setNum(a * this->getDeno());
-    tmp.setDeno(this->getDeno());
-    ans.setNum(this->getNum() - tmp.getNum());
-    ans.setDeno(this->getDeno());
-    ans.Reduce();
+    tmp.setNum(a);
+    tmp.setDeno(1);
+    ans = *this - tmp;
     return ans;
 }
 Fraction Fraction::operator*(int a)
 {
-    Fraction ans;
-    ans.setNum(this->getNum() * a);
-    ans.setDeno(this->getDeno());
-    ans.Reduce();
+    Fraction tmp, ans;
+    tmp.setNum(a);
+    tmp.setDeno(1);
+    ans = *this * tmp;
     return ans;
 }
 Fraction Fraction::operator/(int a)
 {
-    Fraction ans, tmp;
-    if (a == 0)
-    {
-        cout << "Can not divide by 0" << endl;
-        return ans;
-    }
-    ans.setNum(this->getNum());
-    ans.setDeno(this->getDeno() * a);
-    ans.Reduce();
+    Fraction tmp, ans;
+    tmp.setNum(a);
+    tmp.setDeno(1);
+    ans = *this / tmp;
     return ans;
 }
 Fraction Fraction::operator+=(Fraction a)
 {
-    this->setNum(this->getNum() * a.getDeno() + a.getNum() * this->getDeno());
-    this->setDeno(this->getDeno() * a.getDeno());
+    *this = *this + a;
     this->Reduce();
     return *this;
 }
 Fraction Fraction::operator-=(Fraction a)
 {
-    this->setNum(this->getNum() * a.getDeno() - a.getNum() * this->getDeno());
-    this->setDeno(this->getDeno() * a.getDeno());
-    this->Reduce();
+    *this = *this - a;
     return *this;
 }
 Fraction Fraction::operator*=(Fraction a)
 {
-    this->setNum(this->getNum() * a.getNum());
-    this->setDeno(this->getDeno() * a.getDeno());
-    this->Reduce();
+    *this = *this * a;
     return *this;
 }
 Fraction Fraction::operator/=(Fraction a)
 {
-    this->setNum(this->getNum() * a.getDeno());
-    this->setDeno(this->getDeno() * a.getNum());
-    this->Reduce();
+    *this = *this / a;
     return *this;
 }
 Fraction &Fraction::operator++()
 {
-    int x = 1;
-    Fraction a;
-    a.Numerator = x * Denominator;
-    a.Denominator = Denominator;
-
-    Numerator = Numerator + a.Numerator;
-    Denominator = Denominator;
-
-    a.Reduce();
-
+    Fraction tmp;
+    tmp.setNum(1);
+    tmp.setDeno(1);
+    *this += tmp;
     return *this;
 }
-Fraction Fraction::operator++(int)
+Fraction &Fraction::operator++(int)
 {
-    Fraction tmp = *this;
     ++*this;
     return *this;
 }
 Fraction &Fraction::operator--()
 {
-    int x = -1;
-    Fraction a;
-    a.Numerator = x * Denominator;
-    a.Denominator = Denominator;
-
-    Numerator = Numerator + a.Numerator;
-    Denominator = Denominator;
-
-    a.Reduce();
-
+    Fraction tmp;
+    tmp.setNum(1);
+    tmp.setDeno(1);
+    *this -= tmp;
     return *this;
 }
-Fraction Fraction::operator--(int)
+Fraction &Fraction::operator--(int)
 {
-    Fraction tmp = *this;
     --*this;
     return *this;
 }
@@ -269,4 +245,26 @@ Fraction::operator float() const
 {
     float ans = (float)Numerator / (float)Denominator;
     return ans;
+}
+
+ostream &operator<<(ostream &outDev, Fraction &ps)
+{
+    outDev << "Fraction: " << ps.getNum() << "/" << ps.getDeno() << '\n';
+    return outDev;
+}
+Fraction operator+(int a, Fraction &ps)
+{
+    return ps + a;
+}
+Fraction operator-(int a, Fraction &ps)
+{
+    return ps - a;
+}
+Fraction operator*(int a, Fraction &ps)
+{
+    return ps * a;
+}
+Fraction operator/(int a, Fraction &ps)
+{
+    return ps / a;
 }

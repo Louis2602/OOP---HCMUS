@@ -15,10 +15,12 @@ public:
     void setDeno(int);
     void Inverse();
     void Reduce();
+
     Fraction operator+(Fraction);
     Fraction operator-(Fraction);
     Fraction operator*(Fraction);
     Fraction operator/(Fraction);
+    Fraction operator=(Fraction);
 
     Fraction operator+(int);
     Fraction operator-(int);
@@ -38,10 +40,14 @@ public:
     Fraction operator/=(Fraction);
 
     Fraction &operator++();
-    Fraction operator++(int);
+    Fraction &operator++(int);
     Fraction &operator--();
-    Fraction operator--(int);
+    Fraction &operator--(int);
 
     operator float() const;
-    // friend ostream &operator<<(ostream &, Fraction &);
+    friend ostream &operator<<(ostream &, Fraction &);
+    Fraction friend operator+(int, Fraction &);
+    Fraction friend operator-(int, Fraction &);
+    Fraction friend operator*(int, Fraction &);
+    Fraction friend operator/(int, Fraction &);
 };
