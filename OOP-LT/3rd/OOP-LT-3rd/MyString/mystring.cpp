@@ -40,7 +40,33 @@ char *MyString::operator+(const MyString &b)
     c[length + b.length] = '\0';
     return c;
 }
-
+char *MyString::replace(int start, int len, char *str)
+{
+    int strlen = 0, newLength, strIndex = 0;
+    while (str[strlen])
+        strlen++;
+    newLength = this->getLength() - len + strlen;
+    char *ans = new char[newLength];
+    char *p1, *p2, *p3;
+    p1 = subString(0, start);
+    p3 = subString(start + len, this->getLength() - (start + len - 1));
+    for (int i = 0; i < start; i++)
+    {
+        ans[strIndex] = p1[i];
+        strIndex++;
+    }
+    for (int i = 0; i < strlen; i++)
+    {
+        ans[strIndex] = str[i];
+        strIndex++;
+    }
+    for (int i = 0; i < this->getLength() - (start + len - 1); i++)
+    {
+        ans[strIndex] = p3[i];
+        strIndex++;
+    }
+    return ans;
+}
 char *MyString::insert(int pos, char *str)
 {
     int sublen = 0;

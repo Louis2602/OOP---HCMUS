@@ -18,6 +18,7 @@ public:
     char *operator+(const MyString &);
     char *insert(int, char *);
     char *erase(int, int);
+    char *replace(int, int, char *);
     int find(MyString);
     friend ostream &operator<<(ostream &, MyString &);
     friend istream &operator>>(istream &, MyString &);

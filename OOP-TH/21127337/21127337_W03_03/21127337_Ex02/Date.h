@@ -4,20 +4,24 @@
 
 using namespace std;
 
+static int days[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 class Date
 {
-    int day, month, year, hour, minute, second;
-    string DayInWeek[7] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+    int day, month, year;
 
 public:
+    int getDay();
+    int getMonth();
+    int getYear();
+
+    void setDate(int, int, int);
+
     void Input();
     Date Tomorrow();
     Date Yesterday();
 
     Date operator+(int);
     Date operator-(int);
-    Date operator*(int);
-    Date operator/(int);
     Date operator=(Date);
 
     bool operator==(Date);
@@ -27,10 +31,8 @@ public:
     bool operator<(Date);
     bool operator<=(Date);
 
-    Date operator+=(Date);
-    Date operator-=(Date);
-    Date operator*=(Date);
-    Date operator/=(Date);
+    Date operator+=(int);
+    Date operator-=(int);
 
     Date &operator++();
     Date &operator++(int);
