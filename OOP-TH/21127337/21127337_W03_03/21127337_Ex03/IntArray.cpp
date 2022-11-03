@@ -56,7 +56,7 @@ ostream &operator<<(ostream &out, IntArray &IntArr)
     cout << '\n';
     return out;
 }
-IntArray IntArray::operator=(IntArray a)
+IntArray &IntArray::operator=(IntArray a)
 {
     this->setSize(a.getSize());
     this->setArr(a.getArr());
