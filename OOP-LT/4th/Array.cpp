@@ -7,12 +7,22 @@ Array::Array()
 }
 Array::Array(int n)
 {
-    size = n;
+    setSize(n);
 }
 Array::Array(int _arr[], int n)
 {
-    arr = _arr;
-    size = n;
+    setArr(_arr);
+    setSize(n);
+}
+Array::Array(const Array &_arr)
+{
+    int _size = _arr.size;
+    int *pArr = new int[_size];
+    for (int i = 0; i < _size; i++)
+    {
+        pArr[i] = _arr.arr[i];
+        cout << pArr[i] << " ";
+    }
 }
 Array::~Array()
 {
@@ -20,7 +30,8 @@ Array::~Array()
 }
 int *Array::getArr()
 {
-    return arr;
+    int *_arr = arr;
+    return _arr;
 }
 void Array::setArr(int *_arr)
 {
@@ -30,7 +41,8 @@ void Array::setArr(int *_arr)
 }
 int Array::getSize()
 {
-    return size;
+    int _size = size;
+    return _size;
 }
 void Array::setSize(int _size)
 {

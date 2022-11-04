@@ -12,7 +12,7 @@ public:
     Array();
     Array(int);
     Array(int[], int);
-    // Array() : Array(){};
+    Array(const Array &);
     ~Array();
 
     int *getArr();

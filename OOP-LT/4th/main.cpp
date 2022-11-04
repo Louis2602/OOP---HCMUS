@@ -18,6 +18,10 @@ int main()
     cin >> c;
     cout << c;
 
+    cout << "Array constructor from another array object: \n";
+    Array t(a);
+    cout << t;
+
     cout << "Operator =: \n";
     Array d;
     d = b;
