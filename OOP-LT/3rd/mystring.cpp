@@ -17,7 +17,8 @@ void MyString::setStr(char *_str)
 }
 char *MyString::getStr()
 {
-    return str;
+    char *tmp = str;
+    return tmp;
 }
 
 char *MyString::subString(int start, int len)

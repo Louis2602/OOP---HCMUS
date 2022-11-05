@@ -58,8 +58,15 @@ ostream &operator<<(ostream &out, IntArray &IntArr)
 }
 IntArray &IntArray::operator=(IntArray a)
 {
-    this->setSize(a.getSize());
     this->setArr(a.getArr());
+    if (this != &a)
+    {
+        delete[] arr;
+        size = a.size;
+        arr = new int[size];
+        for (int i = 0; i < size; i++)
+            arr[i] = a.arr[i];
+    }
     return *this;
 }
 IntArray::operator int() const
