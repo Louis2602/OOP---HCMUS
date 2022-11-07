@@ -1,14 +1,14 @@
 #include "IntArray.h"
 
+int *IntArray::getArr()
+{
+    return arr;
+}
 void IntArray::setArr(int *_arr)
 {
     arr = new int[size];
     for (int i = 0; i < size; i++)
         arr[i] = _arr[i];
-}
-int *IntArray::getArr()
-{
-    return arr;
 }
 int IntArray::getSize()
 {
@@ -26,7 +26,7 @@ void IntArray::Input()
     int *_arr = new int[n];
     for (int i = 0; i < n; i++)
     {
-        cout << "_arr[" << i << "]: ";
+        cout << "A[" << i << "]: ";
         cin >> _arr[i];
     }
     this->setSize(n);
