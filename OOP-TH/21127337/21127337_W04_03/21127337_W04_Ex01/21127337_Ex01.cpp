@@ -1,4 +1,5 @@
 #include "Fraction.h"
+#include "FractionArray.h"
 
 using namespace std;
 
@@ -38,6 +39,10 @@ int main()
     vF4.Input();
     vF4.Output();
 
+    Fraction t[3] = {a, b, c};
+    FractionArray vF6(t, 3);
+    vF6.Output();
+
     FractionArray vF5;
     vF5.LoadArrFractions("load.txt");
     vF5.Output();
@@ -47,5 +52,14 @@ int main()
     sum = vF5.SumAllFractions();
     cout << "Sum of all fractions: ";
     sum.Output();
+
+    Fraction maxF;
+    maxF = vF5.maxFraction();
+    cout << "The maximum fraction is: ";
+    maxF.Output();
+
+    cout << "Num negative: " << vF5.countNegative() << endl;
+    cout << "Num positive: " << vF5.countPositive() << endl;
+    cout << "Num zero: " << vF5.countZero() << endl;
     return 0;
 }
