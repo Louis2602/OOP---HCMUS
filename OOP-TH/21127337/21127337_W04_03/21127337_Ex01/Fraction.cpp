@@ -105,16 +105,11 @@ Fraction Fraction::operator+(const Fraction &a)
     ans.Reduce();
     return ans;
 }
-int LCM(int a, int b)
-{
-    return (a * b) / GCD(a, b);
-}
 int Fraction::Compare(Fraction ps)
 {
-    int msc = LCM(this->getDeno(), ps.getDeno());
     int ts1, ts2;
-    ts1 = this->getNum() * msc;
-    ts2 = ps.getNum() * msc;
+    ts1 = this->getNum() * ps.getDeno();
+    ts2 = ps.getNum() * this->getDeno();
     int comp = ts1 - ts2;
     if (comp > 0)
         return 1;
