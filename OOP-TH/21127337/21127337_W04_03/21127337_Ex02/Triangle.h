@@ -42,11 +42,15 @@ public:
     Triangle(Point, Point, Point);
     Triangle(string);
 
+    Point getA();
+    Point getB();
+    Point getC();
+
     void Input();
     void Output();
     void setTriangle(Point, Point, Point);
     bool isValidTriangle();
-    void TypeOfTriangle();
+    int TypeOfTriangle();
 
     void loadTriangle(string);
     void saveTriangle(string);

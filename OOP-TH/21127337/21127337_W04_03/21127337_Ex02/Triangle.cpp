@@ -37,7 +37,7 @@ void Point::Input()
 
 void Point::Output()
 {
-    cout << "(" << GetX() << "," << GetY() << ")\n";
+    cout << "(" << GetX() << "," << GetY() << "), ";
 }
 double Point::DistanceAB(Point b)
 {
@@ -133,6 +133,18 @@ void Triangle::setTriangle(Point a, Point b, Point c)
     C.SetX(c.GetX());
     C.SetY(c.GetY());
 }
+Point Triangle::getA()
+{
+    return A;
+}
+Point Triangle::getB()
+{
+    return B;
+}
+Point Triangle::getC()
+{
+    return C;
+}
 void Triangle::Input()
 {
     cout << "Nhap toa do dinh A\n";
@@ -147,6 +159,7 @@ void Triangle::Output()
     A.Output();
     B.Output();
     C.Output();
+    cout << endl;
 }
 double AB, AC, BC;
 bool Triangle::isValidTriangle()
@@ -158,23 +171,30 @@ bool Triangle::isValidTriangle()
         return true;
     return false;
 }
-void Triangle::TypeOfTriangle()
+int Triangle::TypeOfTriangle()
 {
+    /*
+    1: Right-angled Isosceles triangle
+    2: Right-angled triangle
+    3: Equilateral triangle
+    4: Isosceles triangle
+    5: Scalene triangle
+    */
     if ((double)sqrt(AB * AB + BC * BC) == (double)AC || (double)sqrt(AB * AB + AC * AC) == (double)BC || (double)sqrt(BC * BC + AC * AC) == (double)AB)
     {
         if (AB == AC || AC == BC || AB == BC)
-            cout << "Right-angled Isosceles triangle" << endl;
+            return 1;
         else
-            cout << "Right-angled triangle" << endl;
+            return 2;
     }
     else
     {
         if (AB == AC && AC == BC)
-            cout << "Equilateral triangle" << endl;
+            return 3;
         else if (AB == AC || AC == BC || AB == BC)
-            cout << "Isosceles triangle" << endl;
+            return 4;
         else
-            cout << "Scalene triangle" << endl;
+            return 5;
     }
 }
 double Triangle::Parameter()

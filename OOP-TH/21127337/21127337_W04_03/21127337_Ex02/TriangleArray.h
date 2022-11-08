@@ -17,10 +17,14 @@ public:
     void Input();
     void Output();
 
-    void loadTriangleArray();
-    void saveTriangleArray();
+    int getNum();
+    Triangle *getArr();
+    void setContent(Triangle *, int);
 
-    TriangleArray validTriangles();
+    void loadTriangleArray(string);
+    void saveTriangleArray(string);
+
+    void invalidTriangles();
     Triangle maxArea();
     void countTypeTriangles();
 };
