@@ -4,11 +4,9 @@ FractionArray::FractionArray()
 {
     vF.clear();
 }
-FractionArray::FractionArray(Fraction f)
+FractionArray::FractionArray(int n)
 {
-    int n;
-    cout << "Input number of elements: ";
-    cin >> n;
+    Fraction f;
     for (int i = 0; i < n; i++)
         vF.push_back(f);
     setContent(vF, n);

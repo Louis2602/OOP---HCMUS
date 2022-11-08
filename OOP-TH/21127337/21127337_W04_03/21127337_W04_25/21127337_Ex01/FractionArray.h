@@ -7,7 +7,7 @@ class FractionArray : public Fraction
 
 public:
     FractionArray();
-    FractionArray(Fraction);
+    FractionArray(int);
     FractionArray(Fraction[], int);
     FractionArray(vector<Fraction>);
     FractionArray(string);

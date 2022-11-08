@@ -40,6 +40,11 @@ void Fraction::setNum(int _numerator)
 }
 void Fraction::setDeno(int _denominator)
 {
+    if (_denominator == 0)
+    {
+        cout << "Denominator cannot be zero!!";
+        return;
+    }
     this->denominator = _denominator;
 }
 int Fraction::getNum()

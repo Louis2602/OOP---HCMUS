@@ -24,8 +24,7 @@ int main()
     cout << "Positive ? " << a.isPositive() << endl;
     cout << "Zero ? " << a.isZero() << endl;
 
-    Fraction d;
-    FractionArray vF1(d);
+    FractionArray vF1(5);
     vF1.Output();
 
     FractionArray vF2("1/2 3/4 3/11");
