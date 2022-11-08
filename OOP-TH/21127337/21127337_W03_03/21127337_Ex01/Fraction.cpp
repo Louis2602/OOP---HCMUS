@@ -225,8 +225,9 @@ Fraction &Fraction::operator++()
 }
 Fraction &Fraction::operator++(int)
 {
+    Fraction tmp = *this;
     ++*this;
-    return *this;
+    return tmp;
 }
 Fraction &Fraction::operator--()
 {
@@ -238,8 +239,9 @@ Fraction &Fraction::operator--()
 }
 Fraction &Fraction::operator--(int)
 {
+    Fraction tmp = *this;
     --*this;
-    return *this;
+    return tmp;
 }
 Fraction::operator float() const
 {
