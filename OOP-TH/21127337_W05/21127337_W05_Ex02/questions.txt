@@ -1,0 +1,15 @@
+Q1: 1 + 1 = ?
+A.2 B.3 C.4 D.5
+1
+Q2: What is Independence Day of Vietnam ?
+A.30/4 B.2/9 C.1/9 D.1/5
+2
+Q3: How many days in a week ?
+A.4 B.5 C.6 D.7
+4
+Q4: How many countries are there in the South East Asia ?
+A.10 B.9 C.11 D.12
+3
+Q5: Odd one out ?
+A.Banana B.Cashew C.Apple D.Guava
+2
