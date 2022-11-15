@@ -1,9 +1,10 @@
 class Player
 {
     int ans;
-    int score = 0;
+    int score;
 
 public:
+    Player();
     int getAns();
     void setAns(int);
     int getScore();

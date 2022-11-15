@@ -1,5 +1,10 @@
 #include "Player.h"
 
+Player::Player()
+{
+    score = 0;
+    ans = -1;
+}
 int Player::getAns()
 {
     return ans;
