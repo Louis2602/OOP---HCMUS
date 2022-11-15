@@ -3,12 +3,12 @@
 Question::Question(string question, string one, string two, string three,
                    string four, int answer)
 {
-    this->setTriviaQuestion(question);
-    this->setAnswerOne(one);
-    this->setAnswerTwo(two);
-    this->setAnswerThree(three);
-    this->setAnswerFour(four);
-    this->setCorrectAnswer(answer);
+    setTriviaQuestion(question);
+    setAnswerOne(one);
+    setAnswerTwo(two);
+    setAnswerThree(three);
+    setAnswerFour(four);
+    setCorrectAnswer(answer);
 }
 void Question::setTriviaQuestion(string question)
 {

@@ -32,7 +32,7 @@ public:
     void savePoint(string);
 };
 
-class Triangle
+class Triangle : public Point
 {
     Point A, B, C;
 

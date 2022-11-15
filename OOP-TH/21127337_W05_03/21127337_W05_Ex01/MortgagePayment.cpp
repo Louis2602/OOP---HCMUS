@@ -20,24 +20,24 @@ int MortgagePayment::getYears()
 }
 void MortgagePayment::setLoan(long double _loan)
 {
-    this->loan = _loan;
+    loan = _loan;
 }
 void MortgagePayment::setRate(double _rate)
 {
-    this->rate = _rate;
+    rate = _rate;
 }
 void MortgagePayment::setYears(int _years)
 {
-    this->years = _years;
+    years = _years;
 }
 long double MortgagePayment::calcMonthlyPayment()
 {
-    double term = pow((1 + double(this->rate) / 12), 12 * this->years);
+    double term = pow((1 + double(rate) / 12), 12 * years);
     long double payment;
-    payment = double((this->loan * double(this->rate) / 12 * term)) / (term - 1);
+    payment = double((loan * double(rate) / 12 * term)) / (term - 1);
     return payment;
 }
 long double MortgagePayment::totalAmount()
 {
-    return this->calcMonthlyPayment() * this->years;
+    return calcMonthlyPayment() * years;
 }

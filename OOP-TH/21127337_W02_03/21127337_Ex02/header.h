@@ -21,7 +21,7 @@ public:
     float DistanceOy();
 };
 
-class Triangle : public Point
+class Triangle
 {
     Point A, B, C;
 
