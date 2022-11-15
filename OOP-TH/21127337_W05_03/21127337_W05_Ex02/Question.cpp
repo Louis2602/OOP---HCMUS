@@ -1,4 +1,4 @@
-#include "TriviaGame.h"
+#include "Question.h"
 
 Question::Question(string question, string one, string two, string three,
                    string four, int answer)
