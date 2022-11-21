@@ -1,4 +1,7 @@
 #pragma once
+#ifndef OOPMath
+#define OOPMath
+
 #include <iostream>
 #include <cmath>
 
@@ -25,3 +28,4 @@ public:
     static double atanOOP(double);
     static double expOOP(double);
 };
+#endif
