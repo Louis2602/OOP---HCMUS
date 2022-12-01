@@ -1,5 +1,21 @@
 #include "Employee.h"
 
+Employee::Employee(int _id)
+{
+    id = _id;
+}
+Employee::Employee(int _id, string _name)
+{
+    id = _id;
+    name = _name;
+}
+
+Employee::Employee(int _id, string _name, string _address)
+{
+    id = _id;
+    name = _name;
+    address = _address;
+}
 Employee::Employee(int _id, string _name, string _address, string _hireDate)
 {
     id = _id;

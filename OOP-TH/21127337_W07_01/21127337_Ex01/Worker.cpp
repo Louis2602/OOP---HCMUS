@@ -1,9 +1,21 @@
 #include "Worker.h"
 
-Worker::Worker(int id, string name, string address, string hireDate, int _noItems, double _payRate) : Employee(id, name, address, hireDate)
+Worker::Worker(int id, int _noItems) : Employee(id)
 {
     noItems = _noItems;
-    payRate = _payRate;
+}
+Worker::Worker(int id, string name, int _noItems) : Employee(id, name)
+{
+    noItems = _noItems;
+}
+
+Worker::Worker(int id, string name, string address, int _noItems) : Employee(id, name, address)
+{
+    noItems = _noItems;
+}
+Worker::Worker(int id, string name, string address, string hireDate, int _noItems) : Employee(id, name, address, hireDate)
+{
+    noItems = _noItems;
 }
 void Worker::Input()
 {
@@ -18,7 +30,6 @@ void Worker::Output()
 {
     Employee::Output();
     cout << "Number of items in a month: " << noItems << endl;
-    cout << "Pay rate per item: " << payRate << endl;
 }
 double Worker::Salary()
 {
