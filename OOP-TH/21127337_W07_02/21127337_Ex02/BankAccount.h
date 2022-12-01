@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <cmath>
 #include <string>
 
 using namespace std;
@@ -15,7 +16,7 @@ protected:
 public:
     virtual void Input();
     virtual void Output();
-    virtual void Deposite();
-    virtual void Withdraw();
+    virtual void Deposite(double d);
+    virtual void Withdraw(double w);
     virtual double currentBalance() = 0;
 };

@@ -20,9 +20,18 @@ void BankAccount::Output()
     cout << "Social ID of owner: " << id << endl;
     cout << "Balance: " << balance << endl;
 }
-void BankAccount::Deposite()
+void BankAccount::Deposite(double d)
 {
-    double amount;
-    cout << "Enter the amount of money you want to deposite: ";
-    cin >> amount;
+    balance += d;
+}
+void BankAccount::Withdraw(double w)
+{
+    if (balance < 50000)
+        cout << "[ERROR]: Cannot withdraw because your balance is below 50000" << endl;
+    else
+        balance -= w;
+}
+double BankAccount::currentBalance()
+{
+    return balance;
 }

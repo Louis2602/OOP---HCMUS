@@ -11,8 +11,9 @@ private:
 public:
     void Input();
     void Output();
-    void Deposite();
-    void Withdraw();
+    void Deposite(double d);
+    void Withdraw(double w);
+    void WithdrawImmediately(double w);
     double currentBalance();
     double currentInterest();
 };
