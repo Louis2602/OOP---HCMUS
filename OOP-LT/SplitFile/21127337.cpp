@@ -5,9 +5,8 @@ using namespace std;
 int main()
 {
     // input.jpg size = 479404 bytes
-    string source = "./text.txt";
     SplitFile file;
-    cout << "Size: " << file.getSize(source) << endl;
-    file.split(source, 5);
+    file.split();
+    file.join();
     return 0;
 }

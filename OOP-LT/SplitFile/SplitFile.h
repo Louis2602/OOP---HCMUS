@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <sstream>
 
 using namespace std;
 
@@ -15,6 +16,6 @@ private:
 
 public:
     int getSize(string);
-    void split(string, int);
-    void join(string);
+    void split();
+    void join();
 };

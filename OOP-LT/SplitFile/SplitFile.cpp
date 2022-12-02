@@ -8,22 +8,42 @@ int SplitFile::getSize(string source)
     mySource.close();
     return size;
 }
-void SplitFile::split(string source, int n)
+void SplitFile::split()
 {
-    noFiles = n;
-    int sizeofEachFile = size / n;
-    cout << "Size of each file: " << sizeofEachFile << endl;
-    int sizeofLastFile = size - (sizeofEachFile * (n - 1));
-    cout << "Size of last file: " << sizeofLastFile << endl;
+    int sizeofEachFile;
+    string source;
+    cout << "Enter the size (S): ";
+    cin >> sizeofEachFile;
+    cout << "Enter a filename (N): ";
+    cin >> source;
+    size = this->getSize(source);
+    cout << "Your file's size is: " << size << endl;
+    cout << "Enter number of piece: ";
+    cin >> noFiles;
+    int sizeofLastFile = size - (sizeofEachFile * (noFiles - 1));
     fstream readFile(source, ios::in | ios::binary);
     int countSize = 0;
     string name;
     char content;
-    for (int i = 0; i < n - 1; i++)
+    cout << "============SPLITTER============\n";
+    for (int i = 0; i < noFiles - 1; i++)
     {
-        name = to_string(i + 1) + ".txt";
+        if (noFiles < 10)
+        {
+            name = source + ".00" + to_string(i + 1);
+            cout << "F.00" << i + 1 << " => " << name << endl;
+        }
+        else if (noFiles >= 10 && noFiles < 100)
+        {
+            name = source + ".0" + to_string(i + 1);
+            cout << "F.0" << i + 1 << " => " << name << endl;
+        }
+        else
+        {
+            name = source + "." + to_string(i + 1);
+            cout << "F." << i + 1 << " => " << name << endl;
+        }
         fileNames.push_back(name);
-        cout << "File " << i + 1 << ": " << name << endl;
         countSize = 0;
         fstream outputFile(name, ios::out | ios::binary);
         cout << "Position start at: " << readFile.tellg() << endl;
@@ -35,39 +55,58 @@ void SplitFile::split(string source, int n)
         }
         outputFile.close();
     }
-    name = to_string(n) + ".txt";
-    cout << "File " << n << ": " << name << endl;
+    if (noFiles < 10)
+    {
+        name = source + ".00" + to_string(noFiles);
+        cout << "F.00" << noFiles << " => " << name << endl;
+    }
+    else if (noFiles >= 10 && noFiles < 100)
+    {
+        name = source + ".0" + to_string(noFiles);
+        cout << "F.0" << noFiles << " => " << name << endl;
+    }
+    else
+    {
+        name = source + "." + to_string(noFiles);
+        cout << "F." << noFiles << " => " << name << endl;
+    }
+    fileNames.push_back(name);
     cout << "Position start at: " << readFile.tellg() << endl;
     fstream outputFile(name, ios::out | ios::binary);
+    countSize = 0;
     while (!readFile.eof() && countSize < sizeofLastFile)
     {
         countSize++;
-        readFile >> content;
+        readFile.read(&content, 1);
         outputFile << content;
     }
+    cout << "Your file has been splited into " << noFiles << " successfully." << endl;
     outputFile.close();
     readFile.close();
 }
-void SplitFile::join(string source)
+void SplitFile::join()
 {
-    fstream readFile(source, ios::in | ios::binary);
-    int countSize = 0;
-    string name;
+    string source;
+    cout << "Enter the first piece name (N): ";
+    cin >> source;
+    // stringstream ss(source);
+    // string tmp;
+    // getline(ss, tmp, '.');
+    // getline(ss, tmp);
+    stringstream ss(fileNames[0]);
+    string fileName, fileExtension;
+    getline(ss, fileName, '.');
+    getline(ss, fileExtension, '.');
+    string name = fileName + "_AfterJoined." + fileExtension;
+    fstream readFile(name, ios::out | ios::binary);
     char content;
-    for (int i = 0; i < noFiles - 1; i++)
+    cout << "============JOINER============\n";
+    for (int i = 0; i < noFiles; i++)
     {
-        name = to_string(i + 1) + ".txt";
-        cout << "File " << i + 1 << ": " << name << endl;
-        countSize = 0;
-        fstream outputFile(name, ios::out | ios::binary);
-        cout << "Position start at: " << readFile.tellg() << endl;
-        while (!readFile.eof())
-        {
-            readFile.read(&content, 1);
-            outputFile << content;
-            countSize++;
-        }
-        outputFile.close();
+        fstream inputFile(fileNames[i], ios::in | ios::binary);
+        readFile << inputFile.rdbuf();
+        inputFile.close();
     }
+    cout << "Your file has been joined from " << noFiles << " successfully." << endl;
     readFile.close();
 }
