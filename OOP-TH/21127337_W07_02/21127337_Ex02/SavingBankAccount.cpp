@@ -32,9 +32,10 @@ void SavingBankAccount::Deposite(double d)
         {
             cout << "====New account has been created====" << endl;
             SavingBankAccount *newAccount = new SavingBankAccount();
-            newAccount->Input();
-            newAccount->Deposite(d);
             *this = *newAccount;
+            this->Input();
+            this->Deposite(d);
+            delete newAccount;
         }
         else
             cout << "See you next time!!" << endl;

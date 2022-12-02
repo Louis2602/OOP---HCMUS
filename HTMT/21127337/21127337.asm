@@ -4,6 +4,7 @@
 	sum		   : .asciiz "\nSum of odd numbers in the array: "
 	input      : .asciiz "Input element "
 	outputText : .asciiz "Output Array: "
+	newline   : .asciiz  "\n"
 	space      : .asciiz " "
 	colon	   : .asciiz ": "
 .text	
@@ -71,6 +72,9 @@ outputArr:
     	
     	j loop1
 Sum:
+	li $v0, 4
+	la $a0, newline
+	syscall
 	addi $t0, $zero, 0
 	addi $s1, $zero, 0
 	addi $s3, $zero, 0
@@ -90,6 +94,12 @@ Sum:
 		beq $a0, 1, plus
 		bne $a0, 1, loop2
 		plus:
+			li $v0, 4
+			la $a0, space
+			syscall
+			move $a0, $t3
+			li $v0, 1
+			syscall
 			add $s3, $s3, $t3
 		
    		j loop2
