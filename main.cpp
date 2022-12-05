@@ -107,7 +107,7 @@ public:
 
 int main()
 {
-    // Employee e1{"John", "Apple", 25};
+    Employee e1{"John", "Apple", 25};
     // Employee e1 = Employee("John", "Apple", 25);
     // Employee e2{"Kevin", "Google", 39};
     // e.print();
@@ -115,7 +115,7 @@ int main()
     // cout << e.getName() << endl;
     // e.setAge(20);
     // cout << e.getAge() << endl;
-    // e1.AskForPromotion();
+    e1.Work();
     // e2.AskForPromotion();
     Developer d{"LVM", "Facebook", 19, "Javascript"};
     // d.FixBug();
@@ -123,15 +123,15 @@ int main()
     // d.print();
     Teacher t{"Jack", "HCMUS", 47, "Computer Science"};
     // t.PrepareLessons();
-    // t.AskForPromotion();
+    t.AskForPromotion();
     // d.Work();
     // t.Work();
 
     // The most common use of Polymorphism is when a parent class reference is used to refer to a child class object
-    Employee *e1 = &d;
+    // Employee *e1 = &d;
     Employee *e2 = &t;
 
-    e1->Work();
+    // e1->Work();
     e2->Work();
     return 0;
 }

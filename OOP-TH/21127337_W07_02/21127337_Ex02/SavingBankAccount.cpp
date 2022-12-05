@@ -12,7 +12,6 @@ void SavingBankAccount::Input()
 }
 void SavingBankAccount::Output()
 {
-    balance = currentBalance();
     BankAccount::Output();
     cout << "AnnualInterestRates: " << annualInterestRates << endl;
     cout << "Period: " << period << endl;
@@ -20,7 +19,6 @@ void SavingBankAccount::Output()
 }
 void SavingBankAccount::Deposite(double d)
 {
-    balance = currentBalance();
     char opt;
     if (noSavingMonths < period)
     {
@@ -45,7 +43,6 @@ void SavingBankAccount::Deposite(double d)
 }
 void SavingBankAccount::Withdraw(double w)
 {
-    balance = currentBalance();
     if (noSavingMonths < period)
         cout << "[ERROR]: Cannot withdraw!!!" << endl;
     else
@@ -58,9 +55,9 @@ void SavingBankAccount::WithdrawImmediately(double w)
 }
 double SavingBankAccount::currentBalance()
 {
-    return balance * pow((1 + double(annualInterestRates) / period), noSavingMonths / period);
+    return balance * pow((1 + double(annualInterestRates / 100 * period / 12.0)), noSavingMonths / period);
 }
 double SavingBankAccount::currentInterest()
 {
-    return annualInterestRates;
+    return currentBalance() - balance;
 }
