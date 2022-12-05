@@ -61,10 +61,7 @@ int main()
     Company comp;
     comp.Input();
     comp.employeeInfo();
-    cout << "Total salary the company has to pay in a month: " << comp.totalSalary() << endl;
-    vector<Employee *> eList;
-    eList = comp.highestSalary();
-    for (int i = 0; i < eList.size(); i++)
-        eList[i]->Output();
+    comp.totalSalary();
+    comp.highestSalary();
     return 0;
 }

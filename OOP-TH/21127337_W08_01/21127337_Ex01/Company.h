@@ -11,6 +11,6 @@ class Company
 public:
     void Input();
     void employeeInfo();
-    double totalSalary();
-    vector<Employee *> highestSalary();
+    void totalSalary();
+    void highestSalary();
 };

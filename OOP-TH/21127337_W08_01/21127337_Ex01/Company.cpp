@@ -28,23 +28,22 @@ void Company::employeeInfo()
     for (int i = 0; i < employees.size(); i++)
         employees[i]->Output();
 }
-double Company::totalSalary()
+void Company::totalSalary()
 {
     double sum;
     for (int i = 0; i < employees.size(); i++)
         sum += employees[i]->Salary();
-    return sum;
+    cout << "Total salary: " << sum << endl;
 }
-vector<Employee *> Company::highestSalary()
+void Company::highestSalary()
 {
     vector<Employee *> eList;
     int maxSalary = employees[0]->Salary();
     for (int i = 1; i < employees.size(); i++)
         if (maxSalary < employees[i]->Salary())
             maxSalary = employees[i]->Salary();
-
+    cout << "Employees with highest salary: \n";
     for (int i = 0; i < employees.size(); i++)
         if (employees[i]->Salary() == maxSalary)
-            eList.push_back(employees[i]);
-    return eList;
+            employees[i]->Output();
 }
