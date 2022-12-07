@@ -1,11 +1,10 @@
-#include "SplitFile.h"
+#include "File.h"
 
 using namespace std;
 
 int main()
 {
-    // input.jpg size = 479404 bytes
-    SplitFile file;
+    File file;
     file.split();
     file.join();
     return 0;

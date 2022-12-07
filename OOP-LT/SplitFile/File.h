@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class SplitFile
+class File
 {
 private:
     int size;

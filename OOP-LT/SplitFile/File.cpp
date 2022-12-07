@@ -1,6 +1,6 @@
-#include "SplitFile.h"
+#include "File.h"
 
-int SplitFile::getSize(string source)
+int File::getSize(string source)
 {
     fstream mySource(source, ios::in | ios::binary);
     mySource.seekg(0, ios::end);
@@ -8,18 +8,28 @@ int SplitFile::getSize(string source)
     mySource.close();
     return size;
 }
-void SplitFile::split()
+void File::split()
 {
     int sizeofEachFile;
     string source;
-    cout << "Enter the size (S): ";
-    cin >> sizeofEachFile;
-    cout << "Enter a filename (N): ";
-    cin >> source;
-    size = this->getSize(source);
-    cout << "Your file's size is: " << size << endl;
-    cout << "Enter number of piece: ";
-    cin >> noFiles;
+    do
+    {
+        cout << "Enter a filename (N): ";
+        cin >> source;
+        size = getSize(source);
+        if (size == -1)
+            cout << "[ERROR]: Cannot find file " << source << endl;
+    } while (size == -1);
+    cout << "Your file's size is: " << size << " bytes" << endl;
+    do
+    {
+        if (sizeofEachFile * noFiles > size)
+            cout << "[ERROR]: Invalid piece!!\n";
+        cout << "Enter the size of a piece (S): ";
+        cin >> sizeofEachFile;
+        cout << "Enter number of pieces: ";
+        cin >> noFiles;
+    } while (sizeofEachFile * noFiles > size);
     int sizeofLastFile = size - (sizeofEachFile * (noFiles - 1));
     fstream readFile(source, ios::in | ios::binary);
     int countSize = 0;
@@ -28,12 +38,12 @@ void SplitFile::split()
     cout << "============SPLITTER============\n";
     for (int i = 0; i < noFiles - 1; i++)
     {
-        if (noFiles < 10)
+        if (i < 10)
         {
             name = source + ".00" + to_string(i + 1);
             cout << "F.00" << i + 1 << " => " << name << endl;
         }
-        else if (noFiles >= 10 && noFiles < 100)
+        else if (i >= 10 && i < 100)
         {
             name = source + ".0" + to_string(i + 1);
             cout << "F.0" << i + 1 << " => " << name << endl;
@@ -46,7 +56,7 @@ void SplitFile::split()
         fileNames.push_back(name);
         countSize = 0;
         fstream outputFile(name, ios::out | ios::binary);
-        cout << "Position start at: " << readFile.tellg() << endl;
+        cout << "Position start at: " << readFile.tellg() << ", size: " << sizeofEachFile << endl;
         while (!readFile.eof() && countSize < sizeofEachFile)
         {
             readFile.read(&content, 1);
@@ -71,7 +81,7 @@ void SplitFile::split()
         cout << "F." << noFiles << " => " << name << endl;
     }
     fileNames.push_back(name);
-    cout << "Position start at: " << readFile.tellg() << endl;
+    cout << "Position start at: " << readFile.tellg() << ", size: " << sizeofLastFile << endl;
     fstream outputFile(name, ios::out | ios::binary);
     countSize = 0;
     while (!readFile.eof() && countSize < sizeofLastFile)
@@ -80,24 +90,26 @@ void SplitFile::split()
         readFile.read(&content, 1);
         outputFile << content;
     }
-    cout << "Your file has been splited into " << noFiles << " successfully." << endl;
+    cout << "Your file has been splited into " << noFiles << " subfiles successfully." << endl;
     outputFile.close();
     readFile.close();
+    remove(source.c_str());
 }
-void SplitFile::join()
+void File::join()
 {
     string source;
-    cout << "Enter the first piece name (N): ";
-    cin >> source;
-    // stringstream ss(source);
-    // string tmp;
-    // getline(ss, tmp, '.');
-    // getline(ss, tmp);
+    do
+    {
+        cout << "Enter the first piece name (N): ";
+        cin >> source;
+        if (source != "F.001")
+            cout << "[ERROR]: You not entered the first piece name (F.001) so the file could not be merged correctly!!\n";
+    } while (source != "F.001");
     stringstream ss(fileNames[0]);
     string fileName, fileExtension;
     getline(ss, fileName, '.');
     getline(ss, fileExtension, '.');
-    string name = fileName + "_AfterJoined." + fileExtension;
+    string name = fileName + "." + fileExtension;
     fstream readFile(name, ios::out | ios::binary);
     char content;
     cout << "============JOINER============\n";
@@ -107,6 +119,6 @@ void SplitFile::join()
         readFile << inputFile.rdbuf();
         inputFile.close();
     }
-    cout << "Your file has been joined from " << noFiles << " successfully." << endl;
+    cout << "Your file has been joined from " << noFiles << " subfiles successfully." << endl;
     readFile.close();
 }
