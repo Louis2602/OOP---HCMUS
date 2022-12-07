@@ -1,4 +1,5 @@
 #include "File.h"
+#include <direct.h>
 
 int File::getSize(string source)
 {
@@ -21,15 +22,9 @@ void File::split()
             cout << "[ERROR]: Cannot find file " << source << endl;
     } while (size == -1);
     cout << "Your file's size is: " << size << " bytes" << endl;
-    do
-    {
-        if (sizeofEachFile * noFiles > size)
-            cout << "[ERROR]: Invalid piece!!\n";
-        cout << "Enter the size of a piece (S): ";
-        cin >> sizeofEachFile;
-        cout << "Enter number of pieces: ";
-        cin >> noFiles;
-    } while (sizeofEachFile * noFiles > size);
+    cout << "Enter the size of a piece (S): ";
+    cin >> sizeofEachFile;
+    noFiles = size / sizeofEachFile + 1;
     int sizeofLastFile = size - (sizeofEachFile * (noFiles - 1));
     fstream readFile(source, ios::in | ios::binary);
     int countSize = 0;
@@ -93,7 +88,6 @@ void File::split()
     cout << "Your file has been splited into " << noFiles << " subfiles successfully." << endl;
     outputFile.close();
     readFile.close();
-    remove(source.c_str());
 }
 void File::join()
 {
@@ -102,14 +96,16 @@ void File::join()
     {
         cout << "Enter the first piece name (N): ";
         cin >> source;
-        if (source != "F.001")
+        if (source != fileNames[0])
             cout << "[ERROR]: You not entered the first piece name (F.001) so the file could not be merged correctly!!\n";
-    } while (source != "F.001");
-    stringstream ss(fileNames[0]);
+    } while (source != fileNames[0]);
+    stringstream ss(source);
     string fileName, fileExtension;
     getline(ss, fileName, '.');
     getline(ss, fileExtension, '.');
-    string name = fileName + "." + fileExtension;
+    if (mkdir("./output") == -1)
+        cerr << " Error : " << strerror(errno) << endl;
+    string name = "./output/" + fileName + "." + fileExtension;
     fstream readFile(name, ios::out | ios::binary);
     char content;
     cout << "============JOINER============\n";
@@ -117,8 +113,10 @@ void File::join()
     {
         fstream inputFile(fileNames[i], ios::in | ios::binary);
         readFile << inputFile.rdbuf();
+        cout << "Merged file " << fileNames[i] << " done!!" << endl;
         inputFile.close();
     }
     cout << "Your file has been joined from " << noFiles << " subfiles successfully." << endl;
+    cout << "File output: " << name << endl;
     readFile.close();
 }
