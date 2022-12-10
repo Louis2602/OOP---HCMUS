@@ -7,22 +7,18 @@ void Castle::nhapDS()
     cin >> noGates;
     cout << "Nhap thong tin tung cong\n";
     Gate *g;
+    int type;
     for (int i = 0; i < noGates; i++)
     {
-        cout << "Thong tin cong Giao Thuong\n";
-        BusinessGate *bg = new BusinessGate[noGates];
-        bg[i].nhap();
-        g = &bg[i];
-        a.push_back(g);
-        cout << "Thong tin cong Hoc Thuat\n";
-        AcademicGate *ag = new AcademicGate[noGates];
-        ag[i].nhap();
-        g = &ag[i];
-        a.push_back(g);
-        cout << "Thong tin cong Suc Manh\n";
-        PowerGate *pg = new PowerGate[noGates];
-        pg[i].nhap();
-        g = &pg[i];
+        cout << "Nhap loai cong (1: BG, 2: PG, 3: AG): ";
+        cin >> type;
+        if (type == 1)
+            g = new BusinessGate;
+        else if (type == 2)
+            g = new PowerGate;
+        else if (type == 3)
+            g = new AcademicGate;
+        g->nhap();
         a.push_back(g);
     }
 }
