@@ -2,6 +2,7 @@
 
 void PowerGate::nhap()
 {
+    cout << "Nhap thong tin cong Power Gate\n";
     cout << "Nhap suc manh: ";
     cin >> sucmanh;
 }

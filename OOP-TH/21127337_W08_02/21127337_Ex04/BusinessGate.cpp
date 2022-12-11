@@ -2,6 +2,7 @@
 
 void BusinessGate::nhap()
 {
+    cout << "Nhap thong tin cong Business Gate\n";
     cout << "Nhap don gia: ";
     cin >> dongia;
     cout << "Nhap so luong: ";

@@ -5,7 +5,6 @@ void Castle::nhapDS()
     int noGates;
     cout << "Nhap so luong cong: ";
     cin >> noGates;
-    cout << "Nhap thong tin tung cong\n";
     Gate *g;
     int type;
     for (int i = 0; i < noGates; i++)

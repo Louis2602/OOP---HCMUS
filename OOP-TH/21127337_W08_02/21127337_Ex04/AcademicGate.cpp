@@ -2,6 +2,7 @@
 
 void AcademicGate::nhap()
 {
+    cout << "Nhap thong tin cong Academic Gate\n";
     cout << "Nhap tri tue: ";
     cin >> tritue;
 }
