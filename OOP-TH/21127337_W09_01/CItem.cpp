@@ -18,6 +18,8 @@ CItem *CItem::removeByName(string item)
 }
 void CItem::setHidden(bool isHidden, bool isAlsoApplyToChildren)
 {
+    this->isHidden = isHidden;
+    this->isAlsoApplyToChildren = isAlsoApplyToChildren;
 }
 CItem::~CItem()
 {

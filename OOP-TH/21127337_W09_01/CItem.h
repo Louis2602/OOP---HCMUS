@@ -22,7 +22,7 @@ public:
     virtual void print(bool) const = 0;
     virtual CItem *findByName(string);
     virtual CItem *removeByName(string);
-    virtual void setHidden(bool, bool);
+    void setHidden(bool, bool);
     virtual ~CItem();
 };
 #endif

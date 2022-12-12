@@ -15,6 +15,5 @@ public:
     void print(bool) const;
     CItem *removeByName(string);
     CItem *findByName(string);
-    void setHidden(bool, bool);
     virtual ~CFolder();
 };

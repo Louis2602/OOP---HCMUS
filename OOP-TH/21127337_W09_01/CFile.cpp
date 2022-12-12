@@ -6,15 +6,11 @@ int CFile::getSize() const
 }
 void CFile::print(bool isDisplay) const
 {
-    // if (this->hidden_attr)
-    // {
     if (isDisplay)
     {
         cout << name << endl;
         return;
     }
-    // }
-    // cout << this->getName() << endl;
 }
 CFile::~CFile()
 {

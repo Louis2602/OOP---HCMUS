@@ -49,13 +49,6 @@ CItem *CFolder::findByName(string item)
     }
     return it;
 }
-void CFolder::setHidden(bool isHidden, bool isAlsoApplyToChildren)
-{
-    this->isHidden = isHidden;
-    this->isAlsoApplyToChildren = isAlsoApplyToChildren;
-    for (int i = 0; i < data.size(); i++)
-        data[i]->setHidden(isHidden, isAlsoApplyToChildren);
-}
 CFolder::~CFolder()
 {
 }
