@@ -13,7 +13,7 @@ int main()
     C.add(&System); // (4)
     C.add(&Windows);
     cout << "Content of folder C ->" << endl;
-    bool isPrintHiddenItems = true;
+    bool isPrintHiddenItems = false;
     C.print(isPrintHiddenItems); // print hidden items or not? 1/0 (5)
     CItem *p;
     p = C.removeByName("System"); // (6)
