@@ -61,6 +61,7 @@ int main()
     Company comp;
     comp.Input();
     comp.employeeInfo();
+    cout << "=============================\n";
     comp.totalSalary();
     comp.highestSalary();
     return 0;

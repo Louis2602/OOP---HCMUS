@@ -5,8 +5,7 @@ void Company::Input()
     int noOE, noW, num;
     cout << "Enter number of Employees: ";
     cin >> num;
-    Employee *e;
-    e = nullptr;
+    Employee *e = nullptr;
     int type;
     for (int i = 0; i < num; i++)
     {
@@ -41,16 +40,20 @@ void Company::totalSalary()
         sum += employees[i]->Salary();
     cout << "Total salary: " << sum << endl;
 }
+bool compare(Employee *a, Employee *b)
+{
+    return a->Salary() < b->Salary();
+}
+
 void Company::highestSalary()
 {
-    vector<Employee *> eList;
-    int maxSalary = employees[0]->Salary();
-    for (int i = 1; i < employees.size(); i++)
-        if (maxSalary < employees[i]->Salary())
-            maxSalary = employees[i]->Salary();
-    cout << "=============================\n";
+    // int maxSalary = employees[0]->Salary();
+    // for (int i = 1; i < employees.size(); i++)
+    //     if (maxSalary < employees[i]->Salary())
+    //         maxSalary = employees[i]->Salary();
+    Employee *e = *max_element(employees.begin(), employees.end(), compare);
     cout << "Employees with highest salary: \n";
     for (int i = 0; i < employees.size(); i++)
-        if (employees[i]->Salary() == maxSalary)
+        if (employees[i]->Salary() == e->Salary())
             employees[i]->Output();
 }

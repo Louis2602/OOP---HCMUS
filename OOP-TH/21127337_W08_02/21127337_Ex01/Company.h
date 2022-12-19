@@ -3,6 +3,7 @@
 #include "Worker.h"
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 class Company
 {

@@ -93,22 +93,9 @@ void Bank::sortInfo()
     int start;
     int end = 0;
     for (int i = 0; i < size - 1; i++)
-    {
-        if (list[i].getLoan() == list[i + 1].getLoan())
-        {
-            end++;
-            if (end == 1)
-                start = i;
-            else
-            {
-                // cout << start << " " << start + end << endl;
-                for (int i = start; i < start + end - 1; i++)
-                    if (list[i].getName() < list[i + 1].getName())
-                        swap(list[i], list[i + 1]);
-            }
-            // sort(list.begin(), list.end(), compareName);
-        }
-    }
+        for (int j = i; j < size; j++)
+            if ((list[i].getLoan() == list[j].getLoan()) && (list[i].getName() > list[j].getName()))
+                swap(list[i], list[j]);
 }
 void Bank::saveInfo(string filename)
 {
