@@ -16,27 +16,27 @@ int main()
     bool isPrintHiddenItems = true;
     C.print(isPrintHiddenItems); // print hidden items or not? 1/0 (5)
     CItem *p;
-    p = C.removeByName("System"); // (6)
-    cout << "Content of folder C afer removing folder System ->" << endl;
-    C.print(true);
-    p = C.findByName("b.doc"); // (7)
-    if (p != NULL)
-    {
-        cout << "b.doc is found in folder C" << endl;
-    }
-    else
-    {
-        cout << "b.doc is not found" << endl;
-    }
-    p = C.findByName("a.txt");
-    if (p != NULL)
-    {
-        cout << "a.txt is found" << endl;
-    }
-    else
-    {
-        cout << "a.txt is not found" << endl;
-    }
+    // p = C.removeByName("System"); // (6)
+    // cout << "Content of folder C afer removing folder System ->" << endl;
+    // C.print(true);
+    // p = C.findByName("b.doc"); // (7)
+    // if (p != NULL)
+    // {
+    //     cout << "b.doc is found in folder C" << endl;
+    // }
+    // else
+    // {
+    //     cout << "b.doc is not found" << endl;
+    // }
+    // p = C.findByName("a.txt");
+    // if (p != NULL)
+    // {
+    //     cout << "a.txt is found" << endl;
+    // }
+    // else
+    // {
+    //     cout << "a.txt is not found" << endl;
+    // }
     p = C.findByName("Windows"); // (8)
     bool isHidden;
     bool isAlsoApplyToChildren;
@@ -44,12 +44,13 @@ int main()
     {
         cout << "Folder Windows is folder. Content of folder Windows ->" << endl;
 
-        isHidden = true;
-        isAlsoApplyToChildren = false;
+        isHidden = false;
+        isAlsoApplyToChildren = true;
         // set HIDDEN to folder p and do not change hidden attributes of its sub-items
 
         p->setHidden(isHidden, isAlsoApplyToChildren); // (9)
         p->print(true);
+
         // set HIDDEN to folder p and all its items
         isHidden = true;
         isAlsoApplyToChildren = true;

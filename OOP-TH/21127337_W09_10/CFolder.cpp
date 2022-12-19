@@ -13,7 +13,7 @@ int CFolder::getSize() const
 }
 void CFolder::print(bool isDisplay) const
 {
-    if (!this->isHidden)
+    if (!this->isHidden && isDisplay)
         cout << name << endl;
     for (int i = 0; i < data.size(); i++)
     {
