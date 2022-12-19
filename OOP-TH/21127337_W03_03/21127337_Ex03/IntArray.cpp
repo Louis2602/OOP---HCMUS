@@ -47,25 +47,23 @@ istream &operator>>(istream &in, IntArray &IntArr)
     IntArr.setArr(_arr);
     return in;
 }
-ostream &operator<<(ostream &out, IntArray &IntArr)
+ostream &operator<<(ostream &out, const IntArray &IntArr)
 {
-    int *arr = IntArr.getArr();
-    int n = IntArr.getSize();
-    for (int i = 0; i < n; i++)
-        out << arr[i] << " ";
+    for (int i = 0; i < IntArr.size; i++)
+        out << IntArr.arr[i] << " ";
     cout << '\n';
     return out;
 }
-IntArray &IntArray::operator=(IntArray a)
+IntArray &IntArray::operator=(const IntArray &src)
 {
-    this->setArr(a.getArr());
-    if (this != &a)
+    if (this != &src)
     {
+        // Base::operator=(src) if inheritance
         delete[] arr;
-        size = a.size;
+        size = src.size;
         arr = new int[size];
         for (int i = 0; i < size; i++)
-            arr[i] = a.arr[i];
+            arr[i] = src.arr[i];
     }
     return *this;
 }

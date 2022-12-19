@@ -15,9 +15,9 @@ public:
     int getSize();
     void setSize(int);
 
-    IntArray &operator=(IntArray);
+    IntArray &operator=(const IntArray&);
 
-    friend ostream &operator<<(ostream &, IntArray &);
+    friend ostream &operator<<(ostream &, const IntArray &);
     friend istream &operator>>(istream &, IntArray &);
 
     int &operator[](int);
