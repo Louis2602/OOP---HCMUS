@@ -9,14 +9,26 @@ void Castle::nhapDS()
     int type;
     for (int i = 0; i < noGates; i++)
     {
-        cout << "Nhap loai cong (1: BG, 2: PG, 3: AG): ";
-        cin >> type;
-        if (type == 1)
-            g = new BusinessGate;
-        else if (type == 2)
-            g = new PowerGate;
-        else if (type == 3)
-            g = new AcademicGate;
+        while (true)
+        {
+            cout << "Nhap loai cong (1: BG, 2: PG, 3: AG): ";
+            cin >> type;
+            if (type == 1)
+            {
+                g = new BusinessGate;
+                break;
+            }
+            else if (type == 2)
+            {
+                g = new PowerGate;
+                break;
+            }
+            else if (type == 3)
+            {
+                g = new AcademicGate;
+                break;
+            }
+        }
         g->nhap();
         a.push_back(g);
     }
