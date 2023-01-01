@@ -1,12 +1,14 @@
 #pragma once
 
 #include "Employee.h"
+#include "Worker.h"
 
 class OfficeEmployee : public Employee
 {
 private:
     int noWorkDays;
     double payRate = 300000;
+    vector<Employee *> downEmp;
 
 public:
     OfficeEmployee() : Employee(){};

@@ -25,11 +25,29 @@ void OfficeEmployee::Input()
     cin >> noWorkDays;
     cout << "Enter your pay rate per day: ";
     cin >> payRate;
+    int n;
+    cout << "Enter number of workers below you: ";
+    cin >> n;
+    downEmp.resize(n);
+    int type;
+    for (int i = 0; i < n; i++)
+    {
+        cout << "Enter type of worker: ";
+        cin >> type;
+        if (type == 0)
+        {
+            downEmp[i] = new Worker;
+        }
+        downEmp[i]->Input();
+    }
 }
 void OfficeEmployee::Output()
 {
     Employee::Output();
     cout << "Number of working days: " << noWorkDays << endl;
+    cout << "Workers below: " << endl;
+    for (int i = 0; i < downEmp.size(); i++)
+        downEmp[i]->Output();
 }
 double OfficeEmployee::Salary() const
 {
