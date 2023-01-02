@@ -110,7 +110,6 @@ int main() {
   // The most common use of Polymorphism is when a parent class reference is
   // used to refer to a child class object Employee *e1 = &d;
   Employee *e2 = &t;
-
   // e1->Work();
   e2->Work();
   return 0;
