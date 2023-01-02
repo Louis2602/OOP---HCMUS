@@ -62,7 +62,7 @@ int main()
     comp.Input();
     comp.employeeInfo();
     cout << "=============================\n";
-    comp.totalSalary();
-    comp.highestSalary();
+    // comp.totalSalary();
+    // comp.highestSalary();
     return 0;
 }
