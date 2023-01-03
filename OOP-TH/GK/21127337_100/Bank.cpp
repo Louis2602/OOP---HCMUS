@@ -90,10 +90,8 @@ bool compareLoanAmount(HomeMortgage i1, HomeMortgage i2)
 void Bank::sortInfo()
 {
     sort(list.begin(), list.end(), compareLoanAmount);
-    int start;
-    int end = 0;
     for (int i = 0; i < size - 1; i++)
-        for (int j = i; j < size; j++)
+        for (int j = i + 1; j < size; j++)
             if ((list[i].getLoan() == list[j].getLoan()) && (list[i].getName() > list[j].getName()))
                 swap(list[i], list[j]);
 }
