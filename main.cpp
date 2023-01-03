@@ -4,13 +4,15 @@ using namespace std;
 // Abstration
 // if any classes sign to the contract of abstraction class, it has to provide
 // the implementation for the method that is in the contract. Abstract class
-class AbstractEmployee {
+class AbstractEmployee
+{
   // A pure virtual function is declared by assigning 0 in declaration
   virtual void AskForPromotion() = 0;
 };
 
 // class Employee sign to contract of abstraction class AbstractEmployee
-class Employee : AbstractEmployee {
+class Employee : AbstractEmployee
+{
 private:
   string Company;
   int Age;
@@ -22,12 +24,14 @@ protected:
 
 public:
   // Constructors
-  Employee(string name, string company, int age) {
+  Employee(string name, string company, int age)
+  {
     Name = name;
     Company = company;
     Age = age;
   }
-  void AskForPromotion() {
+  void AskForPromotion()
+  {
     if (Age > 30)
       cout << Name << " got promoted" << endl;
     else
@@ -43,7 +47,8 @@ public:
   {
     return Name;
   }
-  void setAge(int age) {
+  void setAge(int age)
+  {
     if (age > 18)
       Age = age;
   }
@@ -54,39 +59,47 @@ public:
 };
 // Inheritance
 // Add public to inherit public methods from parent class
-class Developer : public Employee {
+class Developer : public Employee
+{
 public:
   string FavProgrammingLanguage;
   Developer(string name, string company, int age, string favProgrammingLanguage)
-      : Employee(name, company, age) {
+      : Employee(name, company, age)
+  {
     FavProgrammingLanguage = favProgrammingLanguage;
   }
-  void FixBug() {
+  void FixBug()
+  {
     // cout << getName() << " fixed bug using " << FavProgrammingLanguage <<
     // endl;
     cout << Name << " fixed bug using " << FavProgrammingLanguage << endl;
   }
   // Polymorphism
-  void Work() {
+  void Work()
+  {
     cout << Name << " is writing " << FavProgrammingLanguage << endl;
   }
 };
 
-class Teacher : public Employee {
+class Teacher : public Employee
+{
 public:
   string Subject;
-  void PrepareLessons() {
+  void PrepareLessons()
+  {
     cout << Name << " is preparing " << Subject << " lesson" << endl;
   }
   Teacher(string name, string company, int age, string subject)
-      : Employee(name, company, age) {
+      : Employee(name, company, age)
+  {
     Subject = subject;
   }
   // Polymorphism
   void Work() { cout << Name << " is teaching " << Subject << endl; }
 };
 
-int main() {
+int main()
+{
   Employee e1{"John", "Apple", 25};
   // Employee e1 = Employee("John", "Apple", 25);
   // Employee e2{"Kevin", "Google", 39};
